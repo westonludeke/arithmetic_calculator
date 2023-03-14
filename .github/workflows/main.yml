@@ -1,0 +1,20 @@
+name: Mirror main to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+      - run: |
+          git checkout -B gh-pages
+          git reset --hard origin/main
+          git push -f origin gh-pages
