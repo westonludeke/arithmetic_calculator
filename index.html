@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arithmetic Calculator</title>
+    <style>
+      #result {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #489275;
+        text-align: left;
+      }
+
+      body {
+        text-align: center;
+        background-color: maroon;
+      }
+
+      .calcuator {
+        width: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 20px;
+      }
+
+      .calculator-container {
+        background-color: white;
+        display: inline-block;
+        padding: 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator-container">
+      <div class="calculator">
+        <div id="result">0</div>
+        <br>
+        <input type="number" id="left-number" value="0">
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <input type="number" id="right-number" value="0">
+        <button id="calculate">=</button>
+      </div>
+    </div>
+
+    <script>
+      const leftNumberInput = document.getElementById('left-number');
+      const operatorSelect = document.getElementById('operator');
+      const rightNumberInput = document.getElementById('right-number');
+      const calculateButton = document.getElementById('calculate');
+      const resultDiv = document.getElementById('result');
+
+      calculateButton.addEventListener('click', () => {
+        calculate();
+      });
+
+      leftNumberInput.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13) {
+          calculate();
+        }
+      });
+
+      rightNumberInput.addEventListener('keydown', (event) => {
+        if (event.keyCode === 13) {
+          calculate();
+        }
+      });
+
+      function calculate(){
+        const leftNumber = parseInt(leftNumberInput.value);
+        const rightNumber = parseInt(rightNumberInput.value);
+        const operator = operatorSelect.value;
+        let result;
+
+        switch (operator) {
+          case '+':
+            result = leftNumber + rightNumber;
+            break;
+          case '-':
+            result = leftNumber - rightNumber;
+            break;
+          case '*':
+            result = leftNumber * rightNumber;
+            break;
+          case '/':
+            result = leftNumber / rightNumber;
+            break;
+        }
+
+        resultDiv.textContent = result;
+      };
+    </script>
+  </body>
+</html>
