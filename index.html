@@ -37,14 +37,14 @@
       <div class="calculator">
         <div id="result">0</div>
         <br>
-        <input type="number" id="left-number" value="0">
+        <input type="text" id="left-number" value="0">
         <select id="operator">
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="*">*</option>
           <option value="/">/</option>
         </select>
-        <input type="number" id="right-number" value="0">
+        <input type="text" id="right-number" value="0">
         <button id="calculate">=</button>
       </div>
     </div>
@@ -73,8 +73,8 @@
       });
 
       function calculate(){
-        const leftNumber = parseInt(leftNumberInput.value);
-        const rightNumber = parseInt(rightNumberInput.value);
+        const leftNumber = parseFloat(leftNumberInput.value);
+        const rightNumber = parseFloat(rightNumberInput.value);
         const operator = operatorSelect.value;
         let result;
 
